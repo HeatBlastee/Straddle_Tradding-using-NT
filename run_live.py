@@ -11,6 +11,16 @@ MODE=LIVE             -> real Bybit execution (set BYBIT_ENV + keys). Real order
 
 import os
 
+# Load local .env if available
+env_path = os.path.join(os.path.dirname(__file__), ".env")
+if os.path.exists(env_path):
+    with open(env_path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                k, v = line.split("=", 1)
+                os.environ.setdefault(k.strip(), v.strip().strip("'\""))
+
 from nautilus_trader.adapters.bybit import BybitDataClientConfig # Configuration for receiving Bybit market data
 from nautilus_trader.adapters.bybit import BybitEnvironment # Selects MAINNET or TESTNET
 from nautilus_trader.adapters.bybit import BybitExecClientConfig # Configuration for actual Bybit order execution

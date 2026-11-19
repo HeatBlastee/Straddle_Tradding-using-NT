@@ -22,6 +22,16 @@ import streamlit as st
 
 import sim_engine
 
+# --- Load local .env if available ---
+env_path = os.path.join(os.path.dirname(__file__), ".env")
+if os.path.exists(env_path):
+    with open(env_path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                k, v = line.split("=", 1)
+                os.environ.setdefault(k.strip(), v.strip().strip("'\""))
+
 # --- Page Configuration ---
 st.set_page_config(
     page_title="BTC ATM Short Straddle | NautilusTrader",

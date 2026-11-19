@@ -10,12 +10,12 @@ Files
 
 Setup & Running the UI
     pip install -r requirements.txt
+    cp .env.example .env               # configure your BYBIT_API_KEY and BYBIT_API_SECRET in .env
     streamlit run app.py               # launches the interactive dashboard at http://localhost:8501
 
 Offline Tests
     python test_straddle.py            # offline, no keys needed -> ALL CHECKS PASSED
-    export BYBIT_API_KEY=... BYBIT_API_SECRET=... BYBIT_ENV=TESTNET
-    python run_live.py
+    python run_live.py                 # loads keys automatically from .env
 
 Option instrument ids look like  BTC-28NOV26-95000-C-USDT-OPTION.BYBIT
 (the -OPTION suffix is required by the adapter).

@@ -1,0 +1,29 @@
+# Environment variables & secrets
+.env
+*.env
+.env.*
+!.env.example
+
+# Python cache & bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# Runtime state, flags & logs
+straddle_state.json
+bot_process.json
+bot_stop.flag
+*.log
+
+# Editor & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

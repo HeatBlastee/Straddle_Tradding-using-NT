@@ -24,7 +24,7 @@ if os.path.exists(env_path):
             line = line.strip()
             if line and not line.startswith("#") and "=" in line:
                 k, v = line.split("=", 1)
-                os.environ.setdefault(k.strip(), v.strip())
+                os.environ.setdefault(k.strip(), v.strip().strip("'\""))
 
 from nautilus_trader.adapters.bybit import (
     BybitDataClientConfig,
